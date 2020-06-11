@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../../js/script.js"></script>
+
+	<title>PizzaBor - Pedidos</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">PizzaBor</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="./orders.html">Pedidos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./products.html">Produtos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./clients.html">Clientes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../../index.html">Sair</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container mt-4 mb-4">
+		<div class="card mt-1">
+			<div class="card-body">
+				<h4>Menu - Pedidos</h4>
+				<hr>
+				<ul id="tab-options" class="nav nav-tabs">
+					<li class="nav-item">
+						<a href="#add-orders" class="nav-link">Novo Pedido</a>
+					</li>
+					<li class="nav-item">
+						<a href="#list-orders-progress" class="nav-link active">Pedidos em Andamento</a>
+					</li>
+					<li class="nav-item">
+						<a href="#list-completed-orders" class="nav-link">Pedidos Concluídos</a>
+					</li>
+				</ul>
+
+				<div class="tab-content mt-2">
+					<div class="tab-pane fade" id="add-orders">
+						<form action="" method="">
+							<label for="client">Cliente</label>
+							<input type="text" class="form-control" name="client" id="client"
+								placeholder="Procure o cliente pelo telefone ou e-mail.">
+							<label for="categorie" class="mt-2">Produtos do Pedido</label>
+							<div class="input-group">
+								<select class="form-control" name="categorie" id="categorie">
+									<option selected disabled>Categoria</option>
+									<option>Pizza Salgada</option>
+									<option>Pizza Doce</option>
+									<option>Calzone</option>
+									<option>Massas</option>
+									<option>Bebidas</option>
+								</select>
+								<select class="form-control" name="products" id="products">
+									<option selected disabled>Produto</option>
+									<option>Calabresa</option>
+									<option>4 Queijos</option>
+									<option>Portuguesa</option>
+								</select>
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button">Adicionar</button>
+								</div>
+							</div>
+							<label class="mt-4">Pedidos na Sacola</label>
+							<table class="table table-sm">
+								<thead>
+									<tr>
+										<th scope="col">Qntd</th>
+										<th scope="col">Produto</th>
+										<th scope="col">Valor Parcial</th>
+										<th scope="col">Valor Total</th>
+										<th scope="col">Opção</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">2</th>
+										<td>4 Queijos [Pizza Salgada]</td>
+										<td>R$ 12,00 [Broto]</td>
+										<td>R$ 24,00</td>
+										<td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+									</tr>
+									<tr>
+										<th scope="row">1</th>
+										<td>Portuguesa [Pizza Salgada]</td>
+										<td>R$ 22,00 [Média]</td>
+										<td>R$ 22,00</td>
+										<td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+									</tr>
+									<tr>
+										<th scope="row">2</th>
+										<td>Coca-Cola Lata [Bebidas]</td>
+										<td>R$ 2,50</td>
+										<td>R$ 5,00</td>
+										<td><button type="button" class="btn btn-danger btn-sm">Remover</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="alert alert-primary" role="alert">
+								<button type="button" class="btn btn-danger btn-sm">Remover Tudo</button>
+								| <b>Valor Total: R$ 51,00</b>
+							</div>
+
+							<label for="comments">Observações</label>
+							<textarea name="comments" id="comments" rows="5" class="form-control"
+								placeholder="Aqui você pode descrever alguma observação do cliente."></textarea>
+
+							<button type="submit" class="btn btn-primary mt-3">Adicionar Pedido</button>
+						</form>
+					</div>
+					<div class="tab-pane fade show active" id="list-orders-progress">
+						<label for="srorders">Buscar</label>
+						<input type="text" class="form-control" name="srorders" id="srorders"
+							placeholder="Procure o pedido pelo telefone ou e-mail.">
+						<hr>
+						<div class='card mt-2'>
+							<div class='card-header text-muted'>Pedido: 012381203</div>
+							<div class='card-body'>
+								<b>Cliente:</b>
+								<p>Jorge Valentin Almeida</p>
+								<b>Telefone:</b>
+								<p>(41) 98936-9202</p>
+								<b>Endereço:</b>
+								<p>R. Nesto Victor (80620-400) | 520 | Apto. 150</p>
+								<p class="p-datatime">Data: 21/05/2020 | Horário: 19:20</p>
+							</div>
+							<div class='card-footer text-muted'>
+								<a><button class='btn btn-danger btn-sm mt-1'>Remover</button></a>
+								<a><button class='btn btn-warning btn-sm mt-1 mr-3'>Vizualizar Produtos</button></a>
+								<a><button class='btn btn-info btn-sm mt-1'>Finalizar Pedido</button></a>
+							</div>
+						</div>
+						<div class='card mt-2'>
+							<div class='card-header text-muted'>Pedido: 032381263</div>
+							<div class='card-body'>
+								<b>Cliente:</b>
+								<p>João da Silva</p>
+								<b>Telefone:</b>
+								<p>(41) 99956-9115</p>
+								<b>Endereço:</b>
+								<p>R. do Herval (80045-010) | 216 | Casa</p>
+								<p class="p-datatime">Data: 21/05/2020 | Horário: 19:10</p>
+							</div>
+							<div class='card-footer text-muted'>
+								<a><button class='btn btn-danger btn-sm mt-1'>Remover</button></a>
+								<a><button class='btn btn-warning btn-sm mt-1 mr-3'>Vizualizar Produtos</button></a>
+								<a><button class='btn btn-info btn-sm mt-1'>Finalizar Pedido</button></a>
+							</div>
+						</div>
+						<div class='card mt-2'>
+							<div class='card-header text-muted'>Pedido: 012371283</div>
+							<div class='card-body'>
+								<b>Cliente:</b>
+								<p>Maria Paula</p>
+								<b>Telefone:</b>
+								<p>(41) 99928-8127</p>
+								<b>Endereço:</b>
+								<p>R. Brasílio Itiberê (80240-060) | 3757 | Apto. 301</p>
+								<p class="p-datatime">Data: 21/05/2020 | Horário: 18:20</p>
+							</div>
+							<div class='card-footer text-muted'>
+								<a><button class='btn btn-danger btn-sm mt-1'>Remover</button></a>
+								<a><button class='btn btn-warning btn-sm mt-1 mr-3'>Vizualizar Produtos</button></a>
+								<a><button class='btn btn-info btn-sm mt-1'>Finalizar Pedido</button></a>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="list-completed-orders">
+						<label for="srordersok">Buscar</label>
+						<input type="text" class="form-control" name="srordersok" id="srordersok"
+							placeholder="Procure o pedido pelo telefone ou e-mail.">
+						<hr>
+						<div class='card mt-2'>
+							<div class='card-body'>
+								<b>Nº do Pedido:</b>
+								<p>012345603</p>
+								<b>Entrada:</b>
+								<p>Data: 10/05/2020 | Horário: 20:00</p>
+								<b>Saída:</b>
+								<p>Data: 10/05/2020 | Horário: 21:00</p>
+
+							</div>
+							<div class='card-footer text-muted'>
+								<a><button class='btn btn-danger btn-sm mt-1'>Remover</button></a>
+								<a><button class='btn btn-warning btn-sm mt-1 mr-3'>Vizualizar Produtos</button></a>
+								<a><button class='btn btn-info btn-sm mt-1'>Dados do Cliente</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

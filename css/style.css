@@ -1,0 +1,47 @@
+body {
+    background-color: darkgrey;
+}
+
+#img-pizza {
+    width: 100px;
+    height: 100px;
+}
+
+.carousel {
+    background: #2f4357;
+}
+
+.carousel-item {
+    height: 280px;
+}
+
+.jumbotron {
+    margin: 0;
+    padding: 30px;
+    border-style: inset;
+}
+
+#div-menu .badge,
+#add-products .badge {
+    width: 100%;
+    text-align: center;
+}
+
+#div-menu .card-body {
+    height: 165px;
+}
+
+#div-menu .card-footer {
+    text-align: center;
+}
+
+.p-email {
+    margin-bottom: 0;
+}
+
+.p-datatime {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-style: italic;
+    color: cadetblue;
+}

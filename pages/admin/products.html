@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../../js/script.js"></script>
+
+	<title>PizzaBor - Produtos</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">PizzaBor</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="./orders.html">Pedidos</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="./products.html">Produtos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./clients.html">Clientes</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../../index.html">Sair</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container mt-4 mb-4">
+		<div class="card mt-1">
+			<div class="card-body">
+				<h4>Menu - Produtos</h4>
+				<hr>
+				<ul id="tab-options" class="nav nav-tabs">
+					<li class="nav-item">
+						<a href="#add-products" class="nav-link active">Novo Produto</a>
+					</li>
+					<li class="nav-item">
+						<a href="#list-products" class="nav-link" id="tab-list-products">Lista de Produtos</a>
+					</li>
+				</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane fade show active mt-4" id="add-products">
+						<h6>Pizza:</h6>
+						<span class='badge badge-primary'>Broto | R$12,00 (4 Fatias)</span>
+						<span class='badge badge-secondary'>Média | R$18,00 (6 Fatias)</span>
+						<span class='badge badge-warning'>Grande | R$24,00 (8 Fatias)</span>
+						<span class='badge badge-danger'>Família | R$32,00 (12 Fatias)</span>
+						<h6 class="mt-2">Calzone:</h6>
+						<span class='badge badge-secondary'>Média | R$22,00</span>
+						<span class='badge badge-warning'>Grande | R$31,00</span>
+
+						<hr>
+						<form action="http://localhost:5000/products" method="POST" id="form-product">
+							<div class="form-group">
+								<label for="url">Imagem do Produto</label>
+								<input type="text" class="form-control" name="url" id="url"
+									placeholder="Informe a URL da imagem do produto.">
+								<small class="form-text text-muted">Dica: Caso não possua, deixar o campo em
+									branco.</small>
+							</div>
+							<label for="name">Nome</label>
+							<input type="text" class="form-control" name="name" id="name"
+								placeholder="Informe o nome do produto." required>
+							<label for="categorie" class="mt-3">Categoria</label>
+							<select required class="form-control" name="categorie" id="categorie">
+								<option selected disabled value="">Escolha a Categoria do produto.</option>
+								<option value="Pizza Salgada">Pizza Salgada</option>
+								<option value="Pizza Doce">Pizza Doce</option>
+								<option value="Calzone">Calzone</option>
+								<option value="Massas">Massas</option>
+								<option value="Bebidas">Bebidas</option>
+							</select>
+							<div class="form-group">
+								<label for="price" class="mt-3">Preço (R$)</label>
+								<input type="number" step="0.01" min=0 class="form-control" name="price" id="price"
+									placeholder="Informe o preço do produto." required>
+								<small class="form-text text-muted">Dica: Ao adicionar pizza ou calzone, informe o
+									multiplicador para o preço padrão.</small>
+							</div>
+							<label for="description">Descrição</label>
+							<textarea name="description" id="description" rows="5" class="form-control"
+								placeholder="Aqui você pode descrever os ingredintes, a marca entre outras coisas."></textarea>
+
+							<button type="submit" class="btn btn-primary mt-3">Adicionar</button>
+						</form>
+					</div>
+					<div class="tab-pane fade" id="list-products">
+						<div id="div-products" class="mt-4">
+							<div class='alert alert-secondary mt-4' role='alert'>
+								<h4 class='alert-heading'>Pizza Salgada</h4>
+							</div>
+							<div class='card mt-2' id='"+index+"'>
+								<h5 class='card-header'>4 Queijos</h5>
+								<div class='card-body'>
+									<img src='../../img/logo-pizzabor.png' alt='Imagem do Produto' id='img-pizza'
+										class='img-thumbnail rounded float-left mr-4'>
+									<p><b>Descrição: </b>Mussarela, provolone, parmesão e queijo tipo Catupiry.</p>
+									<p><b>Preço:</b> Broto - R$12,00 | Média - R$18,00 | Grande - R$24,00 | Família -
+										R$32,00</p>
+								</div>
+								<div class='card-footer text-muted'>
+									<a><button class='btn btn-info btn-sm'>Editar</button></a>
+									<a><button class='btn btn-danger btn-sm'>Remover</button></a>
+								</div>
+							</div>
+							<div class='card mt-2' id='"+index+"'>
+								<h5 class='card-header'>Marguerita</h5>
+								<div class='card-body'>
+									<img src='../../img/logo-pizzabor.png' alt='Imagem do Produto' id='img-pizza'
+										class='img-thumbnail rounded float-left mr-4'>
+									<p><b>Descrição: </b>Mussarela, Manjericão Fresco e Tomate.</p>
+									<p><b>Preço:</b> Broto - R$13,00 | Média - R$19,40 | Grande - R$25,80 | Família -
+										R$34,30</p>
+								</div>
+								<div class='card-footer text-muted'>
+									<a><button class='btn btn-info btn-sm'>Editar</button></a>
+									<a><button class='btn btn-danger btn-sm'>Remover</button></a>
+								</div>
+							</div>
+							<div class='alert alert-secondary mt-4' role='alert'>
+								<h4 class='alert-heading'>Pizza Doce</h4>
+							</div>
+							<div class='card mt-2' id='"+index+"'>
+								<h5 class='card-header'>Banana</h5>
+								<div class='card-body'>
+									<img src='../../img/logo-pizzabor.png' alt='Imagem do Produto' id='img-pizza'
+										class='img-thumbnail rounded float-left mr-4'>
+									<p><b>Descrição: </b>Mussarela, banana, açúcar e canela.</p>
+									<p><b>Preço:</b> Broto - R$15,00 | Média - R$21,60 | Grande - R$26,80 | Família -
+										R$36,10</p>
+								</div>
+								<div class='card-footer text-muted'>
+									<a><button class='btn btn-info btn-sm'>Editar</button></a>
+									<a><button class='btn btn-danger btn-sm'>Remover</button></a>
+								</div>
+							</div>
+							<div class='alert alert-secondary mt-4' role='alert'>
+								<h4 class='alert-heading'>Bebidas</h4>
+							</div>
+							<div class='card mt-2' id='"+index+"'>
+								<h5 class='card-header'>Coca-Cola Lata</h5>
+								<div class='card-body'>
+									<img src='../../img/logo-pizzabor.png' alt='Imagem do Produto' id='img-pizza'
+										class='img-thumbnail rounded float-left mr-4'>
+									<p><b>Descrição: </b>Sabor Original.</p>
+									<p><b>Preço:</b> R$3,50</p>
+								</div>
+								<div class='card-footer text-muted'>
+									<a><button class='btn btn-info btn-sm'>Editar</button></a>
+									<a><button class='btn btn-danger btn-sm'>Remover</button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+		</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+		</script>
+</body>
+
+</html>

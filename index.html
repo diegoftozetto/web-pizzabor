@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<title>PizzaBor - Home</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">PizzaBor</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="./index.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./pages/users/menu.html">Cardápio</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./pages/users/contact.html">Contato</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						Acessar
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="./pages/admin/login.html">Login</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container mt-4 mb-4">
+		<div id="carousel-pizzas" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-pizzas" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-pizzas" data-slide-to="1"></li>
+				<li data-target="#carousel-pizzas" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="./img/carousel/crpizza-01.jpg" alt="First Slide">
+				</div>
+				<div class="carousel-item">
+					<img src="./img/carousel/crpizza-02.jpg" alt="Second Slide">
+				</div>
+				<div class="carousel-item">
+					<img src="./img/carousel/crpizza-03.jpg" alt="Third Slide">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carousel-pizzas" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<a class="carousel-control-next" href="#carousel-pizzas" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+		</div>
+		<hr>
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<img src="img/logo-pizzabor.png" alt="Logo PizzaBor" id="img-pizza">
+				<span class="display-4 ml-2">PizzaBor</span>
+				<p class="lead mt-2">A Pizzaria que vai trazer o sabor irresistível da verdadeira pizza italiana.</p>
+				<p class="lead">Encontre o seu sabor preferido em nosso cardápio e entre em contato conosco.</p>
+				<span class="badge badge-warning">Temos Variedades</span>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" checked disabled>
+					<label class="custom-control-label">Pizzas Salgadas</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" checked disabled>
+					<label class="custom-control-label">Pizzas Doces</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" checked disabled>
+					<label class="custom-control-label">Calzones</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" checked disabled>
+					<label class="custom-control-label">Massas</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" checked disabled>
+					<label class="custom-control-label">Bebidas</label>
+				</div>
+				<p class="lead mt-3">Faça Seu Pedido...</p>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								Pelo Telefone
+							</div>
+							<div class="card-body">
+								<blockquote class="blockquote mb-0">
+									<p>Ligue!!! Nós atendemos e anotamos o seu pedido.</p>
+									<footer class="blockquote-footer">Telefone: (41)3420-1583 | Celular: (41)99935-4536
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-header">
+								Online
+							</div>
+							<div class="card-body">
+								<blockquote class="blockquote mb-0">
+									<p>Clique abaixo, siga os passos e receba em casa.</p>
+									<footer class="blockquote-footer"><a href="">www.pizzaboronline.com.br</a></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
