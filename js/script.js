@@ -33,6 +33,18 @@ function addProduct(action, method, data) {
 	if (!flag) {
 		alert("Falha ao processar requisição. Parâmetros Inválidos.");
 	} else {
-		alert("Produto Adicionado.");
+		$.ajax({
+			type: method,
+			data: JSON.stringify(dataJson),
+			dataType: "json",
+			contentType: "application/json",
+			url: action,
+			success: (result) => {
+				alert(result.message);
+			},
+			error: (result) => {
+				alert(result.message);
+			}
+		});
 	}
 }
