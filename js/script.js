@@ -41,9 +41,20 @@ function addProduct(action, method, data) {
 			url: action,
 			success: (result) => {
 				alert(result.message);
+
+				//Limpar elementos do form
+				$("#form-product input, #form-product textarea").val('');
+				$("#form-product select").prop('selectedIndex', 0);
 			},
 			error: (result) => {
-				alert(result.message);
+				switch (result.status) {
+					case 0:
+						alert("Falha ao processar requisição. Erro na Conexão.");
+						break;
+					default:
+						alert(result.responseJSON.message);
+						break;
+				}
 			}
 		});
 	}
