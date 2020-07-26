@@ -44,5 +44,28 @@ function addClient() {
 		alert("Falha ao processar requisição. Parâmetros Inválidos.");
 	} else {
 		alert("Cliente Adicionado.");
+		$.ajax({
+			type: "POST",
+			data: JSON.stringify(json),
+			dataType: "json",
+			contentType: "application/json",
+			url: "https://api-pizzabor.herokuapp.com/clients/",
+			success: function (result) {
+				alert(result.message);
+
+				//Limpa elementos do form
+				$("#form-client input").val('');
+
+				//Carrega lista de clientes
+				loadListClients();
+			},
+			error: function (result) {
+				if (result.status == 0) {
+					alert("Falha ao processar requisição. Erro na Conexão.");
+				} else {
+					alert(result.responseJSON.message);
+				}
+			}
+		});
 	}
 }
