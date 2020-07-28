@@ -82,7 +82,15 @@ function listProducts() {
 			console.log(result);
 		},
 		error: function (result) {
-			console.log(result);
+			$("#div-products").html("");
+			switch (result.status) {
+				case 0:
+					$("#div-products").append("<div class='alert alert-danger' role='alert'>Falha ao processar requisição. Erro na Conexão.</div>");
+					break;
+				default:
+					$("#div-products").append("<div class='alert alert-danger' role='alert'>" + result.responseJSON.message + "</div>");
+					break;
+			}
 		}
 	});	
 }
