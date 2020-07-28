@@ -11,6 +11,11 @@ $(document).ready(function () {
 		addProduct(me.attr('action'), me.attr('method'), me.serializeArray());
 	});
 
+	var element = document.getElementById("div-products");
+	if (element) {
+		listProducts();
+	}
+
 	//Adicionar Cliente (Evento)
 	$("#form-client").submit(function (e) {
 		e.preventDefault();
@@ -64,6 +69,22 @@ function addProduct(action, method, data) {
 			}
 		});
 	}
+}
+
+// Listar Produtos (Admin)
+function listProducts() {
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		contentType: "application/json",
+		url: "https://api-pizzabor.herokuapp.com/products",
+		success: function (result) {
+			console.log(result);
+		},
+		error: function (result) {
+			console.log(result);
+		}
+	});	
 }
 
 ///
