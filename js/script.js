@@ -151,7 +151,18 @@ function listProductsMenu() {
 			console.log(result)
 		},
 		error: function (result) {
-			console.log(result)
+			$("#div-menu").html("");
+			$("#div-menu").append("<div class='jumbotron'></div>");
+			$("#div-menu .jumbotron").append("<h1 class='display-4'><img src='../../img/logo-pizzabor.png' alt='Logo PizzaBor' id='img-pizza'> PizzaBor</h1>");
+			$("#div-menu .jumbotron").append("<hr>");
+			switch (result.status) {
+				case 0:
+					$("#div-menu .jumbotron").append("<div class='alert alert-danger' role='alert'>Falha ao processar requisição. Erro na Conexão.</div>");
+					break;
+				default:
+					$("#div-menu .jumbotron").append("<div class='alert alert-danger' role='alert'>" + result.responseJSON.message + "</div>");
+					break;
+			}
 		}
 	});
 }
