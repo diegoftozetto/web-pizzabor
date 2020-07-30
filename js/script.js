@@ -148,7 +148,54 @@ function listProductsMenu() {
 		contentType: "application/json",
 		url: "https://api-pizzabor.herokuapp.com/products",
 		success: function (result) {
-			console.log(result)
+			$("#div-menu").html("");
+			$("#div-menu").append("<div class='jumbotron'></div>");
+			$("#div-menu .jumbotron").append("<h1 class='display-4 mb-4'><img src='../../img/logo-pizzabor.png' alt='Logo PizzaBor' id='img-pizza'> PizzaBor</h1>");
+			$("#div-menu .jumbotron").append("<h4>Cardápio</h4>");
+			$("#div-menu .jumbotron").append("<hr>");
+
+			if (result.length > 0) {
+				var currentCategorie = "";
+				result.forEach((element, index) => {
+					if (element.categorie != currentCategorie) {
+						currentCategorie = element.categorie;
+						$("#div-menu .jumbotron").append("<div class='alert alert-secondary mt-4' role='alert'><h4 class='alert-heading'>" + currentCategorie + "</h4></div>");
+						$("#div-menu .jumbotron").append("<div class='row' id='" + currentCategorie.replace(" ", "-") + "'></div>");
+					}
+
+					$("#div-menu .jumbotron #" + currentCategorie.replace(" ", "-")).append("<div class='col-sm-4' id='" + index + "'></div>");
+					$("#div-menu .jumbotron #" + index).append("<div class='card mt-2'></div>");
+					$("#div-menu .jumbotron #" + index + " .card").append("<h5 class='card-header'>" + element.name + "</h5>");
+					$("#div-menu .jumbotron #" + index + " .card").append("<div class='card-body'></div>");
+
+					if (element.url)
+						$("#div-menu .jumbotron #" + index + " .card-body").append("<img src='" + element.url + "' alt='Logo PizzaBor' id='img-pizza' class='img-thumbnail rounded float-left mr-4'>");
+					else
+						$("#div-menu .jumbotron #" + index + " .card-body").append("<img src='../../img/logo-pizzabor.png' alt='Logo PizzaBor' id='img-pizza' class='img-thumbnail rounded float-left mr-4'>");
+
+					$("#div-menu .jumbotron #" + index + " .card-body").append("<p><b>Descrição:</b><br>" + element.description + "</p>");
+
+
+					$("#div-menu .jumbotron #" + index + " .card").append("<div class='card-footer'></div>");
+
+					if (element.categorie == "Pizza Salgada" || element.categorie == "Pizza Doce") {
+						$("#div-menu .jumbotron #" + index + " .card-footer").append(
+							"<span class='badge badge-primary'>Broto | R$" + (element.price * 12).toFixed(2) + " (4 Fatias)</span>" +
+							"<span class='badge badge-secondary'>Média | R$" + (element.price * 18).toFixed(2) + " (6 Fatias)</span>" +
+							"<span class='badge badge-warning'>Grande | R$" + (element.price * 24).toFixed(2) + " (8 Fatias)</span>" +
+							"<span class='badge badge-danger'>Família | R$" + (element.price * 32).toFixed(2) + " (12 Fatias)</span>");
+					} else if (element.categorie == "Calzone") {
+						$("#div-menu .jumbotron #" + index + " .card-footer").append(
+							"<span class='badge badge-secondary'>Média | R$" + (element.price * 22).toFixed(2) + "</span>" +
+							"<span class='badge badge-warning'>Grande | R$" + (element.price * 31).toFixed(2) + "</span>");
+					} else {
+						$("#div-menu .jumbotron #" + index + " .card-footer").append(
+							"<span class='badge badge-secondary'>Preço | R$" + parseFloat(element.price).toFixed(2) + "</span>");
+					}
+				});
+			} else {
+				$("#div-menu .jumbotron").append("<div class='alert alert-warning' role='alert'>Nenhum Produto Cadastrado.</div>");
+			}
 		},
 		error: function (result) {
 			$("#div-menu").html("");
