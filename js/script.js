@@ -16,6 +16,12 @@ $(document).ready(function () {
 		e.preventDefault();
 		addClient();
 	});
+
+	//Carregar Clientes
+	element = document.getElementById("div-clients");
+	if (element) {
+		loadListClients();
+	}
 });
 
 ///
@@ -123,4 +129,53 @@ function addClient() {
 			}
 		});
 	}
+}
+
+//Carrega Clientes (Listar)
+function loadListClients() {
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		contentType: "application/json",
+		url: "https://api-pizzabor.herokuapp.com/clients",
+		success: function (result) {
+			$("#div-clients").html("");
+			if (result.length <= 0) {
+				$("#div-clients").append("<div class='alert alert-warning' role='alert'>Nenhum Produto Cadastrado.</div>");
+			} else {
+				$("#div-clients").prepend("<table class='table'>" +
+					"<thead> " +
+					"<tr>" +
+					"<th scope='col'> # </th>" +
+					"<th scope='col'> Nome </th>" +
+					"<th scope='col'> Telefone </th>" +
+					"<th scope='col'> Endereço </th>" +
+					"<th scope='col'> E-mail </th>" +
+					"<th scope='col'>  </th>" +
+					"<th scope='col'> </th>" +
+					"</tr>" +
+					"</thead>"
+				);
+
+				$("table").append("<tbody>");
+
+				for (key in result) {
+					$("tbody").append(
+						"<tr>" +
+						"<th scope='row'> # </th>" +
+						"<td> " + result[key].name + " </td>" +
+						"<td> " + result[key].phone + " </td>" +
+						"<td> " + result[key].address + " </td>" +
+						"<td> " + result[key].email + " </td>" +
+						"<td> <a><button class='btn btn-info btn-sm'>Editar</button></a> </td>" +
+						"<td> <a onClick=\"deleteClient('" + result[key]._id + "');\"><button class='btn btn-danger btn-sm ml-2'>Remover</button></a> </td>" +
+						"</tr>"
+					);
+				}
+
+				$("tbody").append("</tbody>");
+				$("table").append("</table>");
+			}
+		}
+	});
 }
