@@ -141,40 +141,21 @@ function loadListClients() {
 		success: function (result) {
 			$("#div-clients").html("");
 			if (result.length <= 0) {
-				$("#div-clients").append("<div class='alert alert-warning' role='alert'>Nenhum Produto Cadastrado.</div>");
+				$("#div-clients").append("<div class='alert alert-warning' role='alert'>Nenhum Cliente Cadastrado.</div>");
 			} else {
-				$("#div-clients").prepend("<table class='table'>" +
-					"<thead> " +
-					"<tr>" +
-					"<th scope='col'> # </th>" +
-					"<th scope='col'> Nome </th>" +
-					"<th scope='col'> Telefone </th>" +
-					"<th scope='col'> Endereço </th>" +
-					"<th scope='col'> E-mail </th>" +
-					"<th scope='col'>  </th>" +
-					"<th scope='col'> </th>" +
-					"</tr>" +
-					"</thead>"
-				);
-
-				$("table").append("<tbody>");
-
 				for (key in result) {
-					$("tbody").append(
-						"<tr>" +
-						"<th scope='row'> # </th>" +
-						"<td> " + result[key].name + " </td>" +
-						"<td> " + result[key].phone + " </td>" +
-						"<td> " + result[key].address + " </td>" +
-						"<td> " + result[key].email + " </td>" +
-						"<td> <a><button class='btn btn-info btn-sm'>Editar</button></a> </td>" +
-						"<td> <a onClick=\"deleteClient('" + result[key]._id + "');\"><button class='btn btn-danger btn-sm ml-2'>Remover</button></a> </td>" +
-						"</tr>"
-					);
-				}
+					$("#div-clients").append("<div class='card mt-2' id='" + key + "'></div>");
 
-				$("tbody").append("</tbody>");
-				$("table").append("</table>");
+					$("#div-clients #" + key).append("<div class='card-body'></div>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Nome: </b>" + result[key].name + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Telefone: </b>" + result[key].phone + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Endereço: </b>" + result[key].address + " (" + result[key].cep + ")" + " | " + result[key].number + " | " + result[key].complement + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p class='p-email'><b>E-mail: </b>" + result[key].email + "</p>");
+
+					$("#div-clients #" + key).append("<div class='card-footer text-muted'></div>");
+					$("#div-clients #" + key + " .card-footer").append("<a><button class='btn btn-info btn-sm'>Editar</button></a>");
+					$("#div-clients #" + key + " .card-footer").append("<a onClick=\"deleteClient('" + result[key]._id + "');\"><button class='btn btn-danger btn-sm ml-2'>Remover</button></a>");
+				}
 			}
 		}
 	});
