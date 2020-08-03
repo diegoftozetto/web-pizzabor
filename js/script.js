@@ -223,9 +223,17 @@ function deleteProduct(id) {
 		url: "https://api-pizzabor.herokuapp.com/products/" + id,
 		success: function (result) {
 			alert(result.message);
+			listProducts();
 		},
 		error: function (result) {
-			console.log(result)
+			switch (result.status) {
+				case 0:
+					alert("Falha ao processar requisição. Erro na Conexão.");
+					break;
+				default:
+					alert(result.responseJSON.message);
+					break;
+			}
 		}
 	});
 }
