@@ -157,6 +157,15 @@ function loadListClients() {
 					$("#div-clients #" + key + " .card-footer").append("<a onClick=\"deleteClient('" + result[key]._id + "');\"><button class='btn btn-danger btn-sm ml-2'>Remover</button></a>");
 				}
 			}
+		},
+		error: function (result) {
+			$("#div-clients").html("");
+
+			if (result.status == 0) {
+				$("#div-clients").append("<div class='alert alert-danger' role='alert'>Falha ao processar requisição. Erro na Conexão.</div>");
+			} else {
+				$("#div-clients").append("<div class='alert alert-danger' role='alert'>" + result.responseJSON.message + "</div>");
+			}
 		}
 	});
 }
