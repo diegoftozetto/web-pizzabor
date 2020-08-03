@@ -214,6 +214,22 @@ function listProductsMenu() {
 	});
 }
 
+// Remover Produto
+function deleteProduct(id) {
+	$.ajax({
+		type: "DELETE",
+		dataType: "json",
+		contentType: "application/json",
+		url: "https://api-pizzabor.herokuapp.com/products/" + id,
+		success: function (result) {
+			alert(result.message);
+		},
+		error: function (result) {
+			console.log(result)
+		}
+	});
+}
+
 ///
 /// Clientes
 ///
