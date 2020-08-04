@@ -328,6 +328,13 @@ function deleteClient(id) {
 		success: function (result) {
 			alert(result.message);
 			loadListClients();
+		},
+		error: function (result) {
+			if (result.status == 0) {
+				alert("Falha ao processar requisição. Erro na Conexão.");
+			} else {
+				alert(result.responseJSON.message);
+			}
 		}
 	});
 }
