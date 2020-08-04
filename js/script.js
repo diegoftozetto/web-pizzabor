@@ -105,7 +105,7 @@ function listProducts() {
 					// Card
 					$("#div-products").append("<div class='card mt-2' id='" + index + "'></div>");
 					// Titulo do card
-					$("#div-products" + " #" + index).append("<h5 class='card-header'>" + element.name + "</h5>"); 
+					$("#div-products" + " #" + index).append("<h5 class='card-header'>" + element.name + "</h5>");
 					//Corpo do card
 					$("#div-products" + " #" + index).append("<div class='card-body'></div>");
 
@@ -143,7 +143,7 @@ function listProducts() {
 					break;
 			}
 		}
-	});	
+	});
 }
 
 //Listar Produtos (Cardapio)
@@ -314,6 +314,20 @@ function loadListClients() {
 			} else {
 				$("#div-clients").append("<div class='alert alert-danger' role='alert'>" + result.responseJSON.message + "</div>");
 			}
+		}
+	});
+}
+
+// Remover Produto
+function deleteClient(id) {
+	$.ajax({
+		type: "DELETE",
+		dataType: "json",
+		contentType: "application/json",
+		url: "https://api-pizzabor.herokuapp.com/clients/" + id,
+		success: function (result) {
+			alert(result.message);
+			loadListClients();
 		}
 	});
 }
