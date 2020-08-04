@@ -26,6 +26,12 @@ $(document).ready(function () {
 		e.preventDefault();
 		addClient();
 	});
+
+	//Carregar Clientes
+	element = document.getElementById("div-clients");
+	if (element) {
+		loadListClients();
+	}
 });
 
 ///
@@ -271,4 +277,43 @@ function addClient() {
 			}
 		});
 	}
+}
+
+//Carrega Clientes (Listar)
+function loadListClients() {
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		contentType: "application/json",
+		url: "https://api-pizzabor.herokuapp.com/clients",
+		success: function (result) {
+			$("#div-clients").html("");
+			if (result.length <= 0) {
+				$("#div-clients").append("<div class='alert alert-warning' role='alert'>Nenhum Cliente Cadastrado.</div>");
+			} else {
+				for (key in result) {
+					$("#div-clients").append("<div class='card mt-2' id='" + key + "'></div>");
+
+					$("#div-clients #" + key).append("<div class='card-body'></div>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Nome: </b>" + result[key].name + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Telefone: </b>" + result[key].phone + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p><b>Endereço: </b>" + result[key].address + " (" + result[key].cep + ")" + " | " + result[key].number + " | " + result[key].complement + "</p>");
+					$("#div-clients #" + key + " .card-body").append("<p class='p-email'><b>E-mail: </b>" + result[key].email + "</p>");
+
+					$("#div-clients #" + key).append("<div class='card-footer text-muted'></div>");
+					$("#div-clients #" + key + " .card-footer").append("<a><button class='btn btn-info btn-sm'>Editar</button></a>");
+					$("#div-clients #" + key + " .card-footer").append("<a onClick=\"deleteClient('" + result[key]._id + "');\"><button class='btn btn-danger btn-sm ml-2'>Remover</button></a>");
+				}
+			}
+		},
+		error: function (result) {
+			$("#div-clients").html("");
+
+			if (result.status == 0) {
+				$("#div-clients").append("<div class='alert alert-danger' role='alert'>Falha ao processar requisição. Erro na Conexão.</div>");
+			} else {
+				$("#div-clients").append("<div class='alert alert-danger' role='alert'>" + result.responseJSON.message + "</div>");
+			}
+		}
+	});
 }
